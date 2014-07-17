@@ -1,8 +1,9 @@
 package com.mvcmusic.mvcmusicstore.controllers;
 
 import com.mvcmusic.mvcmusicstore.entities.Genre;
-import java.util.ArrayList;
+import com.mvcmusic.mvcmusicstore.models.GenreModel;
 import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/Store/")
 public class StoreController {
     
-    //private static final Logger logger = Logger.getLogger(StoreController.class);
+    //protected static final Logger logger = Logger.getLogger(StoreController.class);
     
-//    @Resource(name="genreService")
-//    private GenreModel genreModel;
+    @Resource(name="genreService")
+    private GenreModel genreModel;
     
 //    @Resource(name="albumService")
 //    private AlbumModel albumModel;
@@ -29,21 +30,13 @@ public class StoreController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getStoreIndexPage(ModelMap model) {
         
-        List<Genre> myGenreList = new ArrayList(); //genreModel.findAllGenres();
-        
-        //Remove this when genreModel is populating list
-        myGenreList = fillGenres(myGenreList);
-        
+        List<Genre> myGenreList = genreModel.findAllGenres();
+                
         model.put("genreList", myGenreList);
         model.put("genreCount", myGenreList.size());
         
         return "storeindex";
     }
-
-//    @RequestMapping(value = "/Browse", method = RequestMethod.GET)
-//    public String getStoreBrowsePage(ModelMap model) {
-//        return "Browse";
-//    }
 
     /**
      * Map the Browse page
@@ -73,7 +66,8 @@ public class StoreController {
         return "Details";
     }
     
-    protected List<Genre> fillGenres(List<Genre> myGenreList){
+    
+    protected List<Genre> fillGenres2(List<Genre> myGenreList){
         
         Genre genOne = new Genre();
         genOne.setGenreid(1);

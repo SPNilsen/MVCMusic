@@ -40,12 +40,17 @@
             <version>2.2</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <dependency> 
+            <groupId>javax.servlet</groupId> 
+            <artifactId>jstl</artifactId> 
+            <version>1.2</version> 
+        </dependency>
+        <!--        <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -245,7 +250,7 @@
 
         <!-- Hibernate Dependencies -->
 
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
             <version>${hibernate.version}</version>
@@ -272,10 +277,22 @@
             <type>pom</type>
         </dependency>
         
-        <dependency>
+        <!--        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>ejb3-persistence</artifactId>
             <version>1.0.2.GA</version>
+        </dependency>-->
+        
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
         </dependency>
         
         <dependency>

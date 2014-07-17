@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+        <link rel="icon" type="image/x-icon" href="/MVCMusicStore/Images/favicon.ico">
         <link rel="stylesheet" media="screen" type="text/css" href="./css/Site.css" />
         
         <title>Index JSP Page</title>
