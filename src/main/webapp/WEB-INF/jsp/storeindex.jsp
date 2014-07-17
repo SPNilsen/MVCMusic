@@ -7,7 +7,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" languge="java"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" language="java"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,20 +23,14 @@
                 <li><a href="/MVCMusicStore/spring/Store/">Store</a></li>
             </ul>
         </div>
-        
-        <h1>Browse Genres</h1>
         <div>
             <h1>Browse Genres</h1>
             <h2>Select from ${genreCount} genres: </h2>
-            <c:forEach items="${genreList}" var="myGenre">
-                       <c:url var=""albumUrl" value="Browse?genre=${myGenre.name}" />
-                           <h3><li><a href=""${albumUrl}"><c:out value="${myGenre.name}" /></a></li></h3>
-            </c:forEach>
-                               
             <ul>
-                <li><a href="Browse?genre=Disco">Disco</a></li>
-                <li><a href="Browse?genre=Jazz">Jazz</a></li>
-                <li><a href="Browse?genre=Rock">Rock</a></li>
+            <c:forEach items="${genreList}" var="myGenre">
+                       <c:url var="albumUrl" value="Browse?genre=${myGenre.name}" />
+                           <h3><li><a href="${albumUrl}"><c:out value="${myGenre.name}" /></a></li></h3>
+            </c:forEach>
             </ul>
         </div>
     </body>

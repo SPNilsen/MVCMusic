@@ -1,10 +1,8 @@
 package com.mvcmusic.mvcmusicstore.controllers;
 
 import com.mvcmusic.mvcmusicstore.entities.Genre;
-import com.mvcmusic.mvcmusicstore.models.AlbumModel;
-import com.mvcmusic.mvcmusicstore.models.GenreModel;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/Store/")
 public class StoreController {
     
-    @Resource(name="genreService")
-    private GenreModel genreModel;
+    //private static final Logger logger = Logger.getLogger(StoreController.class);
     
-    @Resource(name="albumService")
-    private AlbumModel albumModel;
+//    @Resource(name="genreService")
+//    private GenreModel genreModel;
+    
+//    @Resource(name="albumService")
+//    private AlbumModel albumModel;
 
     /**
      *  Map root of Store Page
@@ -29,7 +29,11 @@ public class StoreController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getStoreIndexPage(ModelMap model) {
         
-        List<Genre> myGenreList = genreModel.findAllGenres();
+        List<Genre> myGenreList = new ArrayList(); //genreModel.findAllGenres();
+        
+        //Remove this when genreModel is populating list
+        myGenreList = fillGenres(myGenreList);
+        
         model.put("genreList", myGenreList);
         model.put("genreCount", myGenreList.size());
         
@@ -67,6 +71,22 @@ public class StoreController {
     public String getStoreDetailsPage(@RequestParam(value = "albumId", required = false) String albumId, ModelMap model) {
         model.addAttribute("albumId", albumId);
         return "Details";
+    }
+    
+    protected List<Genre> fillGenres(List<Genre> myGenreList){
+        
+        Genre genOne = new Genre();
+        genOne.setGenreid(1);
+        genOne.setName("Pop");
+        
+        Genre genTwo = new Genre();
+        genTwo.setGenreid(2);
+        genTwo.setName("Rock");
+        
+        myGenreList.add(genOne);
+        myGenreList.add(genTwo);
+        
+        return myGenreList;
     }
 
 }
